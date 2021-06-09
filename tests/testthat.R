@@ -1,4 +1,4 @@
 library(testthat)
-library(themehsci)
+library(gghsci)
 
-test_check("themehsci")
+test_check("gghsci")
