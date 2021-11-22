@@ -1,7 +1,7 @@
 Package: gghsci
 Type: Package
 Title: HSCI ggplot2 theme
-Version: 1.0.0
+Version: 1.0.1
 Author: Eetu Mäkelä
 Maintainer: Eetu Mäkelä <eetu.makela@helsinki.fi>
 Description: ggplot2 theme used by the Human Sciences -- Computing Interaction research group at the University of Helsinki.
@@ -10,7 +10,10 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     ggplot2,
-    ggthemes
+    ggthemes,
+    magrittr,
+    scales,
+    purrr
 Suggests:
     testthat
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
