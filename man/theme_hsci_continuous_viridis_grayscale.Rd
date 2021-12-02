@@ -15,7 +15,7 @@ theme_hsci_continuous_viridis_grayscale(
 
 \item{base_family}{base font family}
 
-\item{palette}{virids palette to use}
+\item{palette}{viridis palette to use. Four options are available: "magma" (or "A"), "inferno" (or "B"), "plasma" (or "C"), "viridis" (or "D", the default option) and "cividis" (or "E").}
 }
 \description{
 HSCI ggplot theme with grayscale viridis continuous palette

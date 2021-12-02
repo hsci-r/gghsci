@@ -2,7 +2,8 @@
 % Please edit documentation in R/theme_hsci.R
 \name{theme_hsci_discrete_viridis_grayscale}
 \alias{theme_hsci_discrete_viridis_grayscale}
-\title{HSCI ggplot theme with grayscale viridis discrete palette}
+\title{HSCI ggplot theme with grayscale viridis discrete palette
+Deprecated. use \code{\link{theme_hsci_discrete_grayscale}} instead.}
 \usage{
 theme_hsci_discrete_viridis_grayscale(
   base_size = 12,
@@ -15,10 +16,11 @@ theme_hsci_discrete_viridis_grayscale(
 
 \item{base_family}{base font family}
 
-\item{palette}{virids palette to use}
+\item{palette}{viridis palette to use. Four options are available: "magma" (or "A"), "inferno" (or "B"), "plasma" (or "C"), "viridis" (or "D", the default option) and "cividis" (or "E").}
 }
 \description{
 HSCI ggplot theme with grayscale viridis discrete palette
+Deprecated. use \code{\link{theme_hsci_discrete_grayscale}} instead.
 }
 \seealso{
 \code{\link{theme_hsci}}

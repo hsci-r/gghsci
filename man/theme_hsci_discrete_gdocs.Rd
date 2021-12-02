@@ -2,7 +2,8 @@
 % Please edit documentation in R/theme_hsci.R
 \name{theme_hsci_discrete_gdocs}
 \alias{theme_hsci_discrete_gdocs}
-\title{HSCI ggplot theme with gdocs discrete palette}
+\title{HSCI ggplot theme with gdocs discrete palette.
+Deprecated. use \code{\link{theme_hsci_discrete}} instead.}
 \usage{
 theme_hsci_discrete_gdocs(base_size = 12, base_family = "Helvetica")
 }
@@ -12,7 +13,8 @@ theme_hsci_discrete_gdocs(base_size = 12, base_family = "Helvetica")
 \item{base_family}{base font family}
 }
 \description{
-HSCI ggplot theme with gdocs discrete palette
+HSCI ggplot theme with gdocs discrete palette.
+Deprecated. use \code{\link{theme_hsci_discrete}} instead.
 }
 \seealso{
 \code{\link{theme_hsci}}
