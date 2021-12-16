@@ -82,34 +82,8 @@ scale_coloropt <- function(..., option = "normal", aesthetics = c("colour","fill
 #' @inheritParams theme_hsci
 #' @param palette coloropt palette from normal, bright, dark, fancy and tarnish
 #' @seealso \code{\link{theme_hsci}}
-theme_hsci_discrete_coloropt <- function(base_size=12, base_family="Helvetica",palette="normal") {
+theme_hsci_discrete <- function(base_size=12, base_family="Helvetica",palette="normal") {
   list(theme_hsci(base_size,base_family),scale_coloropt(option=palette))
-}
-
-#' HSCI ggplot theme with a discrete coloropt palette.
-#' @export
-#' @inheritParams theme_hsci_discrete_coloropt
-theme_hsci_discrete <- theme_hsci_discrete_coloropt
-
-#' HSCI ggplot theme with gdocs discrete palette.
-#' Deprecated. use \code{\link{theme_hsci_discrete}} instead.
-#' @export
-#' @inheritParams theme_hsci
-#' @seealso \code{\link{theme_hsci}}
-theme_hsci_discrete_gdocs <- function(base_size=12, base_family="Helvetica") {
-  .Deprecated("theme_hsci_discrete", package="gghsci", "gdocs discrete palette is deprecated")
-  list(theme_hsci(base_size,base_family),ggthemes::scale_color_gdocs(),ggthemes::scale_fill_gdocs())
-}
-
-#' HSCI ggplot theme with viridis discrete palette
-#' Deprecated. use \code{\link{theme_hsci_discrete}} instead.
-#' @export
-#' @inheritParams theme_hsci
-#' @param palette viridis palette to use. Four options are available: "magma" (or "A"), "inferno" (or "B"), "plasma" (or "C"), "viridis" (or "D", the default option) and "cividis" (or "E").
-#' @seealso \code{\link{theme_hsci}}
-theme_hsci_discrete_viridis <- function(base_size=12, base_family="Helvetica",palette="viridis") {
-  .Deprecated("theme_hsci_discrete", package="gghsci", "viridis discrete palette is deprecated")
-  list(theme_hsci(base_size,base_family),ggplot2::scale_color_viridis_d(option=palette),ggplot2::scale_fill_viridis_d(option=palette))
 }
 
 #' HSCI ggplot theme with viridis continuous palette
@@ -117,14 +91,9 @@ theme_hsci_discrete_viridis <- function(base_size=12, base_family="Helvetica",pa
 #' @inheritParams theme_hsci
 #' @param palette viridis palette to use. Four options are available: "magma" (or "A"), "inferno" (or "B"), "plasma" (or "C"), "viridis" (or "D", the default option) and "cividis" (or "E").
 #' @seealso \code{\link{theme_hsci}}
-theme_hsci_continuous_viridis <- function(base_size=12, base_family="Helvetica",palette="viridis") {
+theme_hsci_continuous <- function(base_size=12, base_family="Helvetica",palette="viridis") {
   list(theme_hsci(base_size,base_family),ggplot2::scale_color_viridis_c(option=palette),ggplot2::scale_fill_viridis_c(option=palette))
 }
-
-#' HSCI ggplot theme with a continuous viridis palette.
-#' @export
-#' @inheritParams theme_hsci_continuous_viridis
-theme_hsci_continuous <- theme_hsci_continuous_viridis
 
 srgb_to_linear <- Vectorize(function(csrgb) {
   if (csrgb < 0.04045) csrgb/12.92 else ((csrgb+0.055)/1.055)^2.4
@@ -146,20 +115,6 @@ convert_palette_to_grayscale <- function(palette) {
     yl_srgb <- yl_linear %>% dplyr::transmute_all(linear_to_srgb)
     (yl_srgb %>% dplyr::transmute(color=grDevices::rgb(.data$yl,.data$yl,.data$yl,maxColorValue=1)))$color
   }
-}
-
-#' grayscale version of the discrete viridis palette
-#' @export
-#' @inheritParams ggplot2::scale_colour_viridis_d
-#' @seealso \code{\link[ggplot2:scale_colour_viridis_d]{ggplot2::scale_colour_viridis_d}}
-scale_viridis_d_grayscale <- function(..., alpha = 1, begin = 0, end = 1,
-                                      direction = 1, option = "D", aesthetics = c("colour","fill")) {
-  ggplot2::discrete_scale(
-    aesthetics,
-    "viridis_d_grayscale",
-    convert_palette_to_grayscale(scales::viridis_pal(alpha, begin, end, direction, option)),
-    ...
-  )
 }
 
 #' grayscale version of the continuous viridis palette
@@ -195,31 +150,17 @@ scale_coloropt_grayscale <- function(..., option = "normal", aesthetics = c("col
 
 #' HSCI ggplot theme with a grayscale coloropt discrete palette.
 #' @export
-#' @inheritParams theme_hsci_discrete_coloropt
+#' @inheritParams theme_hsci_discrete
 #' @seealso \code{\link{theme_hsci}}
-theme_hsci_discrete_coloropt_grayscale <- function(base_size=12, base_family="Helvetica",palette="normal") {
+theme_hsci_discrete_grayscale <- function(base_size=12, base_family="Helvetica",palette="normal") {
   list(theme_hsci(base_size,base_family),scale_coloropt_grayscale(option=palette))
-}
-
-#' HSCI ggplot theme with a grayscale coloropt discrete palette.
-#' @export
-#' @inheritParams theme_hsci_discrete_coloropt_grayscale
-theme_hsci_discrete_grayscale <- theme_hsci_discrete_coloropt_grayscale
-
-#' HSCI ggplot theme with grayscale viridis discrete palette
-#' Deprecated. use \code{\link{theme_hsci_discrete_grayscale}} instead.
-#' @export
-#' @inheritParams theme_hsci_discrete_viridis
-#' @seealso \code{\link{theme_hsci}}
-theme_hsci_discrete_viridis_grayscale <- function(base_size=12, base_family="Helvetica",palette="viridis") {
-  list(theme_hsci(base_size,base_family),scale_viridis_d_grayscale(option=palette))
 }
 
 #' HSCI ggplot theme with grayscale viridis continuous palette
 #' @export
-#' @inheritParams theme_hsci_continuous_viridis
+#' @inheritParams theme_hsci_continuous
 #' @seealso \code{\link{theme_hsci}}
-theme_hsci_continuous_viridis_grayscale <- function(base_size=12, base_family="Helvetica",palette="viridis") {
+theme_hsci_continuous_grayscale <- function(base_size=12, base_family="Helvetica",palette="viridis") {
   list(theme_hsci(base_size,base_family),scale_viridis_c_grayscale(option=palette))
 }
 

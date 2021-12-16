@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme_hsci.R
 \name{theme_hsci_continuous}
 \alias{theme_hsci_continuous}
-\title{HSCI ggplot theme with a continuous viridis palette.}
+\title{HSCI ggplot theme with viridis continuous palette}
 \usage{
 theme_hsci_continuous(
   base_size = 12,
@@ -18,5 +18,8 @@ theme_hsci_continuous(
 \item{palette}{viridis palette to use. Four options are available: "magma" (or "A"), "inferno" (or "B"), "plasma" (or "C"), "viridis" (or "D", the default option) and "cividis" (or "E").}
 }
 \description{
-HSCI ggplot theme with a continuous viridis palette.
+HSCI ggplot theme with viridis continuous palette
+}
+\seealso{
+\code{\link{theme_hsci}}
 }

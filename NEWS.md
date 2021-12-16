@@ -1,3 +1,10 @@
+Version 1.2.0
+=============
+
+### CHANGES
+
+* Drop deprecated palette options.
+
 Version 1.1.0
 =============
 

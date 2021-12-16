@@ -20,3 +20,6 @@ theme_hsci_discrete(
 \description{
 HSCI ggplot theme with a discrete coloropt palette.
 }
+\seealso{
+\code{\link{theme_hsci}}
+}
