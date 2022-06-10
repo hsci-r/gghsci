@@ -8,7 +8,7 @@
 #' @export
 #' @inheritParams ggplot2::theme_light
 #' @seealso \code{\link{ggplot}}
-theme_hsci <- function(base_size=12, base_family="Helvetica") {
+theme_hsci <- function(base_size=12, base_family="sans") {
   ggplot2::theme_light(
     base_size = base_size,
     base_family = base_family
@@ -35,7 +35,8 @@ get_coloropt_pal <- function(option="normal",n) {
     "bright" = coloropt_bright6,
     "dark" = coloropt_dark6,
     "fancy" = coloropt_fancy6,
-    "tarnish" = coloropt_tarnish6
+    "tarnish" = coloropt_tarnish6,
+    stop("Requested unknown palette")
   )
 }
 
@@ -47,11 +48,11 @@ coloropt_pal <- function(option="normal") {
     values = get_coloropt_pal(option,n)
     n_values <- length(values)
     if (n > n_values) {
-      warning("This manual palette can handle a maximum of ",
-              n_values, " values. You have supplied ", n, ".",
+      warning("This palette returns a maximum of ",
+              n_values, " distinct values. You have requested ", n, ".",
               call. = FALSE)
     }
-    values[seq_len(n)]
+    rep_len(values,n)
   }
 }
 
@@ -73,6 +74,7 @@ scale_coloropt <- function(..., option = "normal", aesthetics = c("colour","fill
     aesthetics,
     "coloropt",
     coloropt_pal(option),
+    na.value=coloropt_na_value(6,option),
     ...
   )
 }
@@ -82,7 +84,7 @@ scale_coloropt <- function(..., option = "normal", aesthetics = c("colour","fill
 #' @inheritParams theme_hsci
 #' @param palette coloropt palette from normal, bright, dark, fancy and tarnish
 #' @seealso \code{\link{theme_hsci}}
-theme_hsci_discrete <- function(base_size=12, base_family="Helvetica",palette="normal") {
+theme_hsci_discrete <- function(base_size=12, base_family="sans",palette="normal") {
   list(theme_hsci(base_size,base_family),scale_coloropt(option=palette))
 }
 
@@ -91,7 +93,7 @@ theme_hsci_discrete <- function(base_size=12, base_family="Helvetica",palette="n
 #' @inheritParams theme_hsci
 #' @param palette viridis palette to use. Four options are available: "magma" (or "A"), "inferno" (or "B"), "plasma" (or "C"), "viridis" (or "D", the default option) and "cividis" (or "E").
 #' @seealso \code{\link{theme_hsci}}
-theme_hsci_continuous <- function(base_size=12, base_family="Helvetica",palette="viridis") {
+theme_hsci_continuous <- function(base_size=12, base_family="sans",palette="viridis") {
   list(theme_hsci(base_size,base_family),ggplot2::scale_color_viridis_c(option=palette),ggplot2::scale_fill_viridis_c(option=palette))
 }
 
@@ -152,7 +154,7 @@ scale_coloropt_grayscale <- function(..., option = "normal", aesthetics = c("col
 #' @export
 #' @inheritParams theme_hsci_discrete
 #' @seealso \code{\link{theme_hsci}}
-theme_hsci_discrete_grayscale <- function(base_size=12, base_family="Helvetica",palette="normal") {
+theme_hsci_discrete_grayscale <- function(base_size=12, base_family="sans",palette="normal") {
   list(theme_hsci(base_size,base_family),scale_coloropt_grayscale(option=palette))
 }
 
@@ -160,7 +162,7 @@ theme_hsci_discrete_grayscale <- function(base_size=12, base_family="Helvetica",
 #' @export
 #' @inheritParams theme_hsci_continuous
 #' @seealso \code{\link{theme_hsci}}
-theme_hsci_continuous_grayscale <- function(base_size=12, base_family="Helvetica",palette="viridis") {
+theme_hsci_continuous_grayscale <- function(base_size=12, base_family="sans",palette="viridis") {
   list(theme_hsci(base_size,base_family),scale_viridis_c_grayscale(option=palette))
 }
 
