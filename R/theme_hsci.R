@@ -15,7 +15,7 @@ theme_hsci <- function(base_size=12, base_family="sans") {
   ) +
     ggplot2::theme(
     axis.ticks.length = ggplot2::unit(0, "cm"),
-    strip.background = ggplot2::element_rect(fill="white"),
+    strip.background = element_blank(),
     strip.text = ggplot2::element_text(colour = 'black')
   )
 }
