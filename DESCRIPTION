@@ -1,7 +1,7 @@
 Package: gghsci
 Type: Package
 Title: HSCI ggplot2 theme
-Version: 1.2.0
+Version: 1.2.1
 Author: Eetu Mäkelä
 Maintainer: Eetu Mäkelä <eetu.makela@helsinki.fi>
 Description: ggplot2 theme used by the Human Sciences -- Computing Interaction research group at the University of Helsinki.
@@ -17,4 +17,4 @@ Imports:
     rlang
 Suggests:
     testthat
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
