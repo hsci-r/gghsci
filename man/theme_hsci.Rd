@@ -4,7 +4,7 @@
 \alias{theme_hsci}
 \title{HSCI ggplot theme}
 \usage{
-theme_hsci(base_size = 12, base_family = "Helvetica")
+theme_hsci(base_size = 12, base_family = "sans")
 }
 \arguments{
 \item{base_size}{base font size, given in pts.}

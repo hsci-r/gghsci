@@ -4,11 +4,7 @@
 \alias{theme_hsci_discrete}
 \title{HSCI ggplot theme with a discrete coloropt palette.}
 \usage{
-theme_hsci_discrete(
-  base_size = 12,
-  base_family = "Helvetica",
-  palette = "normal"
-)
+theme_hsci_discrete(base_size = 12, base_family = "sans", palette = "normal")
 }
 \arguments{
 \item{base_size}{base font size, given in pts.}

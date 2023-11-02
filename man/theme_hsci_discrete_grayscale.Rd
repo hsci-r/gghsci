@@ -6,7 +6,7 @@
 \usage{
 theme_hsci_discrete_grayscale(
   base_size = 12,
-  base_family = "Helvetica",
+  base_family = "sans",
   palette = "normal"
 )
 }
