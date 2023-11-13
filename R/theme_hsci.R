@@ -15,7 +15,7 @@ theme_hsci <- function(base_size=12, base_family="sans") {
   ) +
     ggplot2::theme(
     axis.ticks.length = ggplot2::unit(0, "cm"),
-    strip.background = element_blank(),
+    strip.background = ggplot2::element_rect(fill="white"),
     strip.text = ggplot2::element_text(colour = 'black')
   )
 }
@@ -97,13 +97,13 @@ theme_hsci_continuous <- function(base_size=12, base_family="sans",palette="viri
   list(theme_hsci(base_size,base_family),ggplot2::scale_color_viridis_c(option=palette),ggplot2::scale_fill_viridis_c(option=palette))
 }
 
-srgb_to_linear <- Vectorize(function(csrgb) {
-  if (csrgb < 0.04045) csrgb/12.92 else ((csrgb+0.055)/1.055)^2.4
-})
+#srgb_to_linear <- Vectorize(function(csrgb) {
+#  if (csrgb < 0.04045) csrgb/12.92 else ((csrgb+0.055)/1.055)^2.4
+#})
 
-linear_to_srgb <- Vectorize(function(cl) {
-  if (cl<=0.0031308) 12.92*cl else 1.055*cl^(1/2.4) - 0.055
-})
+#linear_to_srgb <- Vectorize(function(cl) {
+#  if (cl<=0.0031308) 12.92*cl else 1.055*cl^(1/2.4) - 0.055
+#})
 
 #' convert a palette to grayscale
 #' @export
@@ -112,10 +112,10 @@ linear_to_srgb <- Vectorize(function(cl) {
 convert_palette_to_grayscale <- function(palette) {
   function(n) {
     colors <- dplyr::as_tibble(t(grDevices::col2rgb(palette(n))))/255
-    colors_linear <- colors %>% dplyr::transmute_all(srgb_to_linear)
-    yl_linear <- colors_linear %>% dplyr::transmute(yl=.2126*.data$red+.7152*.data$green+.0722*.data$blue)
-    yl_srgb <- yl_linear %>% dplyr::transmute_all(linear_to_srgb)
-    (yl_srgb %>% dplyr::transmute(color=grDevices::rgb(.data$yl,.data$yl,.data$yl,maxColorValue=1)))$color
+    #colors_linear <- colors %>% dplyr::transmute_all(srgb_to_linear)
+    yl <- colors %>% dplyr::transmute(yl=.2126*.data$red+.7152*.data$green+.0722*.data$blue)
+    #yl_srgb <- yl_linear %>% dplyr::transmute_all(linear_to_srgb)
+    (yl %>% dplyr::transmute(color=grDevices::rgb(.data$yl,.data$yl,.data$yl,maxColorValue=1)))$color
   }
 }
 

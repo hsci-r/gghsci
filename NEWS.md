@@ -1,3 +1,19 @@
+Version 1.2.2
+=============
+
+### BUG FIXES
+
+* Fix grayscale palette calculation
+* Revert changing strip background to transparent
+
+Version 1.2.1
+=============
+
+### BUG FIXES
+
+* Change strip background from white to transparent
+
+
 Version 1.2.0
 =============
 
